@@ -1,15 +1,14 @@
 import React from 'react';
-import data from '../../data/dataAlbum';
 import './index.css';
 
-const Card=()=>{
+const Card=({title,artists,img})=>{
   return (
     <div className='card'>
       <div className='card-wrap'>
-        <img src={data.album.images[0].url} alt={data.album.name} className="card_img"/>
+        <img src={img} alt={title} className="card_img"/>
 
-        <h3 className='card_album'>{data.name}</h3>
-        <h3 className='card_artist'>{data.artists[0].name}</h3>
+        <h3 className='card_album'>{title}</h3>
+        <h3 className='card_artist'>{artists}</h3>
 
         <div className="button_wrapper">
           <button className="card_button">Select</button>
