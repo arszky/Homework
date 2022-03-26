@@ -1,42 +1,57 @@
 body {
-    font-family: sans-serif;
-  }
-  body {
-    font-family: sans-serif;
-  }
-  
-  .container{
-    margin-bottom: 50px;
-    height : 1000px;
-    max-width:  670px;
-  }
-  .createPlaylist {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .inputTitle {
-      border-radius: 15px;
-  }
-  .desc {
-    border-radius: 5px;
-  }
-  .btn {
-    width: 100px;
-    border: 2px solid grey;
-    background-color: grey;
-    border-radius: 25px;
-    cursor: pointer;
-    box-shadow: 0px 2px black;;
-  }
-  
-  .btn:active{
-    position: relative;
-    box-shadow: none;
-    top:2px;
-    z-index: 10;
-  }
-  
-  .fa {
-    margin-right: 5px;
-  }
+  font-family: sans-serif;
+}
+body {
+  font-family: Verdana;
+}
+
+.createPlaylist {
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 100px;
+  margin-bottom: 50px;
+}
+
+.createPlaylist h1 {
+  margin-bottom: 0px;
+}
+
+.form p {
+  margin: 8px;
+}
+
+.inputTitle {
+  border-radius: 15px;
+  width: 250px;
+  background-color: antiquewhite;
+  border: 1px solid white;
+}
+
+.desc {
+  border-radius: 5px;
+  width: 250px;
+  height: 50px;
+  background-color: antiquewhite;
+  border: 1px solid white;
+}
+
+.btn {
+  width: 100px;
+  border: 2px solid #ddbea9;
+  background-color: #ddbea9;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0px 2px black;
+}
+
+.btn:active {
+  position: relative;
+  box-shadow: none;
+  top: 2px;
+  z-index: 10;
+}
+
+.fa {
+  margin-right: 5px;
+}

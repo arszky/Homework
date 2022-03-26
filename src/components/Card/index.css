@@ -1,55 +1,71 @@
 body {
-    margin : 0;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: #6b705c;
+  margin: 0;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: #6b705c;
 }
 
+* {
+  box-sizing: border-box;
+}
 
-
-.card{
-    height: 100vh;
-    text-align: center;
-    padding: 100px;
+.container {
+  width: auto;
+}
+.card {
+  margin: 0 auto;
+  padding: 0 0px;
+  text-align: center;
 }
 
 img {
-    margin-top: 50px;
-    width: 200px;
-    height: 200px;
-    border-radius: 15px;
-
+  margin-top: 40px;
+  width: 140px;
+  height: 140px;
+  border-radius: 15px;
 }
 
 .card-wrap {
-    margin: 0 auto ;
-    height: 400px;
-    width: 300px;
-    background-color: pink;
-    border-radius: 20px;
+  margin: 0 auto;
+  height: 300px;
+  width: 200px;
+  background-color: #ddbea9;
+  border: 2px solid #ffe8d6;
+  border-radius: 20px;
 }
 
 .card_album {
-    margin : 5px 0px;
+  font-size: 13px;
+  margin: 5px 30px;
 }
 
 .card_artist {
-    margin: 5px 0px;
+  font-size: 12px;
+  margin: 5px 0px;
+  font-weight: normal;
+  color: #6b705c;
 }
 
 .card_button {
-    position: relative;
-    position: top;
-    margin-top: 10px;
-    border-radius: 15px;
-    width:100px;
-    height: 25px;
-    background-color:blanchedalmond;
-    border: none;
-    box-shadow: 2px 3px rgb(0, 0, 0);
+  cursor: pointer;
+  position: relative;
+  position: top;
+  margin-top: 0px;
+  border-radius: 15px;
+  font-size: 10px;
+  width: 50px;
+  height: 15px;
+  background-color: #6b705c;
+  border: none;
+  box-shadow: 1px 2px rgb(0, 0, 0);
 }
 
 .card_button:active {
-    position: relative;
-    box-shadow: none;
-    top:2px;
+  position: relative;
+  box-shadow: none;
+  top: 2px;
+}
+
+.card_content {
+  height: 60px;
 }
