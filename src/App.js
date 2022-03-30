@@ -1,10 +1,10 @@
-import Form from './components/Card/form'
-import Home from './page/home'
+// import Form from "./components/FormCreatePlaylist";
+import Home from "./page";
 
 function App() {
   return (
     <div className="App">
-      <Form />
+      {/* <Form /> */}
       <Home />
     </div>
   );
