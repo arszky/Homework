@@ -1,80 +1,70 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
-import Searchbar from "../components/Searchbar";
-import data from "../data/dataAlbum";
-import "./index.css";
+import Search from "../components/Searchbar";
 import config from "../lib/config";
+import "./index.css";
 
-class Home extends Component {
-  state = {
-    accessToken: "",
-    isLogin: false,
+const Home = () => {
+  const [accessToken, setAccessToken] = useState("");
+  const [isLogin, setIsLogin] = useState(false);
+  const [tracks, setTracks] = useState([]);
+  const [selectedTracksUri, setSelectedTracksUri] = useState([]);
+  useEffect(() => {
+    const access_token = new URLSearchParams(window.location.hash).get(
+      "#access_token"
+    );
+    setAccessToken(access_token);
+    setIsLogin(access_token !== null);
+  }, []);
+
+  const onSuccessSearch = (searchTracks) => {
+    const selectedTracks = filterSelectedTracks();
+    const searchDistincTracks = searchTracks.filter(
+      (track) => !selectedTracksUri.includes(track.uri)
+    );
+
+    setTracks([...selectedTracks, ...searchDistincTracks]);
   };
 
-  getHashParams() {
-    const hashParams = {};
-    const r = /([^&;=]+)=?([^&;]*)/g;
-    const q = window.location.hash.substring(1);
-    let e = r.exec(q);
-    while (e) {
-      hashParams[e[1]] = decodeURIComponent(e[2]);
-      e = r.exec(q);
-    }
-    return hashParams;
-  }
-
-  componentDidMount() {
-    const params = this.getHashParams();
-    const { access_token: accessToken } = params;
-
-    this.setState({ accessToken, isAuthorize: accessToken !== undefined });
-  }
-
-  getSpotifyLinkAuthorize() {
+  const generateSpotifyLinkAuthorize = () => {
+    console.log(process.env);
     const state = Date.now().toString();
     const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-    return `${config.SPOTIFY_BASE_URL}/authorize?client_id=${clientId}&response_type=token&redirect_uri=http://localhost:3000&state=${state}&scope=${config.SPOTIFY_SCOPE}`;
-  }
+    return `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=http://localhost:3000&state=${state}&scope=${config.SPOTIFY_SCOPE}`;
+  };
+  const toggleSelect = (track) => {
+    const uri = track.uri;
 
-  onSuccessSearch(tracks) {
-    this.setState({ tracks });
-  }
+    if (selectedTracksUri.includes(uri)) {
+      setSelectedTracksUri(selectedTracksUri.filter((item) => item !== uri));
+    } else {
+      setSelectedTracksUri([...selectedTracksUri, uri]);
+    }
+  };
+  const filterSelectedTracks = () => {
+    return tracks.filter((track) => selectedTracksUri.includes(track.uri));
+  };
 
-  render() {
-    return (
-      <div className="top-wrapper">
-        <a href={this.getSpotifyLinkAuthorize()}>Authorize</a>
-
-        {/* <Searchbar accessToken={this.state.accessToken} onSuccess={tracks} /> */}
-        <Searchbar />
-
-        <div className="container">
-          {data.map((data) => (
-            <Card
-              key={data.id}
-              img={data.album.images[0].url}
-              title={data.name}
-              artists={data.artists[0].name}
-            />
-          ))}
-        </div>
+  return (
+    <div className="top-wrapper">
+      {!isLogin && <a href={generateSpotifyLinkAuthorize()}>Authorize</a>}
+      <Search
+        accessToken={accessToken}
+        onSuccess={(tracks) => onSuccessSearch(tracks)}
+      />
+      <div className="container">
+        {tracks.map((item) => (
+          <Card
+            key={item.id}
+            title={item.name}
+            artist={item.artists[0].name}
+            img={item.album.images[0].url}
+            toggleSelect={() => toggleSelect(item)}
+          />
+        ))}
       </div>
-    );
-  }
+    </div>
+  );
+};
 
-  // const Home = () => {
-  // return (
-  //   <div className="container">
-  //     {data.map((data) => (
-  //       <Card
-  //         key={data.id}
-  //         img={data.album.images[0].url}
-  //         title={data.name}
-  //         artists={data.artists[0].name}
-  //       />
-  //     ))}
-  //   </div>
-  //   );
-  // };
-}
 export default Home;

@@ -16,19 +16,31 @@ body {
 }
 
 img {
-  margin-top: 40px;
+  margin-top: 30px;
   width: 140px;
   height: 140px;
+  border: color 2px;
   border-radius: 15px;
 }
 
 .card-wrap {
+  position: relative;
   margin: 0 auto;
-  height: 300px;
-  width: 200px;
+  height: 290px;
+  width: 190px;
   background-color: #ddbea9;
   border: 2px solid #ffe8d6;
   border-radius: 20px;
+}
+
+.card-wrap:hover {
+  margin: 0 auto;
+  height: 290px;
+  width: 190px;
+  background-color: black;
+  border: 2px solid #ffe8d6;
+  border-radius: 20px;
+  color: #fff;
 }
 
 .card_album {
@@ -50,8 +62,8 @@ img {
   margin-top: 0px;
   border-radius: 15px;
   font-size: 10px;
-  width: 50px;
-  height: 15px;
+  width: 55px;
+  height: 20px;
   background-color: #6b705c;
   border: none;
   box-shadow: 1px 2px rgb(0, 0, 0);

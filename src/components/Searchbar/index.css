@@ -1,26 +1,31 @@
 .searchbarWrap {
-  padding-bottom: 50px;
+  margin: 0 auto;
 }
 
 .form_inputSearch {
+  position: relative;
+  border: none;
+  margin-bottom: 50px;
   margin-top: 5px;
   padding-left: 20px;
-  width: 50%;
+  width: 80%;
   height: 40px;
   border-radius: 20px;
 }
 
 button {
-  margin-left: 10px;
+  margin-left: 8px;
   width: 65px;
   height: 40px;
   border-radius: 20px;
   background-color: black;
   color: antiquewhite;
   border: none;
+  cursor: pointer;
 }
-
-button:active {
+button:hover {
   background-color: antiquewhite;
   color: black;
+  width: 58px;
+  height: 33px;
 }

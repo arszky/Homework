@@ -1,48 +1,47 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
+import config from "../../lib/config";
 import "./index.css";
 
-class Searchbar extends Component {
-  state = {
-    text: "",
+const Search = ({ accessToken, onSuccess }) => {
+  const [text, setText] = useState("");
+  const handleInput = (e) => {
+    setText(e.target.value);
   };
+  const onSubmit = async (e) => {
+    e.preventDefault();
 
-  hendleInput(e) {
-    this.setState({ text: e.target.value });
-  }
-
-  async onSubmit(e) {
-    const { text } = this.state;
-
-    const option = {
-      header: {
-        Authorization: this.props.accessToken,
+    const requestOptions = {
+      headers: {
+        Authorization: "Bearer " + accessToken,
         "Content-Type": "application/json",
       },
     };
 
-    // const response = await fetch(
-    //   `${config.SPOTIFY_BASE_URL}/v1/search?type=track&q=${text}`
-    // ).then(data.json());
-    // const tracks = response.items;
-    // this.props.onSuccess(tracks);
-  }
+    try {
+      const response = await fetch(
+        `${config.SPOTIFY_BASE_URL}/search?type=track&q=${text}`,
+        requestOptions
+      ).then((data) => data.json());
 
-  render() {
-    return (
-      <div className="searchbarWrap" onSubmit={(e) => this.onSubmit}>
-        <input
-          type="text"
-          placeholder="Search..."
-          className="form_inputSearch"
-          required
-          onChange={this.handleInput}
-        />
-        <button type="submit" value="submit">
-          Search
-        </button>
-      </div>
-    );
-  }
-}
+      const tracks = response.tracks.items;
+      onSuccess(tracks);
+    } catch (e) {
+      alert(e);
+    }
+  };
 
-export default Searchbar;
+  return (
+    <form className="searchBarWrap" onSubmit={onSubmit}>
+      <input
+        type="text"
+        placeholder="Search..."
+        className="form_inputSearch"
+        required
+        onChange={handleInput}
+      />
+      <button type="submit">Search</button>
+    </form>
+  );
+};
+
+export default Search;
