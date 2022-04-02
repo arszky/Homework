@@ -13,7 +13,7 @@
   border-radius: 20px;
 }
 
-button {
+.btn-search {
   margin-left: 8px;
   width: 65px;
   height: 40px;
@@ -23,9 +23,14 @@ button {
   border: none;
   cursor: pointer;
 }
-button:hover {
+.btn-search:hover {
   background-color: antiquewhite;
   color: black;
-  width: 58px;
-  height: 33px;
+}
+
+.btn-search:active {
+  margin-left: 13px;
+  background-color: antiquewhite;
+  color: black;
+  width: 60px;
 }

@@ -1,10 +1,10 @@
-// import Form from "./components/FormCreatePlaylist";
+import Form from "./components/FormCreatePlaylist";
 import Home from "./page";
 
 function App() {
   return (
     <div className="App">
-      {/* <Form /> */}
+      <Form />
       <Home />
     </div>
   );

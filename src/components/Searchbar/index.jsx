@@ -39,7 +39,9 @@ const Search = ({ accessToken, onSuccess }) => {
         required
         onChange={handleInput}
       />
-      <button type="submit">Search</button>
+      <button className="btn-search" type="submit">
+        Search
+      </button>
     </form>
   );
 };
