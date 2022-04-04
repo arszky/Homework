@@ -2,7 +2,7 @@ body {
   margin: 0;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  background-color: #6b705c;
+  background-color: rgb(43, 43, 43);
 }
 
 * {
@@ -10,6 +10,7 @@ body {
 }
 
 .card {
+  width: 100%;
   margin: 0 auto;
   padding: 0 0px;
   text-align: center;
@@ -28,8 +29,8 @@ img {
   margin: 0 auto;
   height: 290px;
   width: 190px;
-  background-color: #ddbea9;
-  border: 2px solid #ffe8d6;
+  color: white;
+  background-color: #000000;
   border-radius: 20px;
 }
 
@@ -64,7 +65,7 @@ img {
   font-size: 10px;
   width: 55px;
   height: 20px;
-  background-color: #6b705c;
+  background-color: #3cbb2d;
   border: none;
   box-shadow: 1px 2px rgb(0, 0, 0);
 }

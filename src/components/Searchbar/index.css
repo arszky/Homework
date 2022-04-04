@@ -14,23 +14,27 @@
 }
 
 .btn-search {
-  margin-left: 8px;
-  width: 65px;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-top: 15px;
+  width: 70px;
   height: 40px;
-  border-radius: 20px;
-  background-color: black;
-  color: antiquewhite;
   border: none;
+  background-color: #35a529;
+  border-radius: 25px;
   cursor: pointer;
+  box-shadow: 2px 3px black;
 }
+
 .btn-search:hover {
-  background-color: antiquewhite;
-  color: black;
+  width: 70px;
+  height: 40px;
+  background-color: #3cbb2d;
 }
 
 .btn-search:active {
-  margin-left: 13px;
-  background-color: antiquewhite;
-  color: black;
-  width: 60px;
+  position: relative;
+  box-shadow: none;
+  top: 2px;
+  z-index: 10;
 }
