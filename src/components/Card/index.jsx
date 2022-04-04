@@ -14,7 +14,7 @@ const Card = ({ title, artist, img, toggleSelect }) => {
       <div className="card-wrap">
         <img src={img} alt={title} className="card_img" />
 
-        <div class="card_content">
+        <div className="card_content">
           <h3 className="card_album">{title}</h3>
           <h3 className="card_artist">{artist}</h3>
         </div>

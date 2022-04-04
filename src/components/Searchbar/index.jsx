@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import config from "../../lib/config";
 import "./index.css";
+import { useSelector } from "react-redux";
 
-const Search = ({ accessToken, onSuccess }) => {
+const Search = ({ onSuccess }) => {
+  const accessToken = useSelector((state) => state.auth.accessToken);
   const [text, setText] = useState("");
   const handleInput = (e) => {
     setText(e.target.value);

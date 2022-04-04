@@ -1,4 +1,3 @@
-import Form from "./components/FormCreatePlaylist";
 import Home from "./page";
 
 function App() {

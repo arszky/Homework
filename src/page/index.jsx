@@ -4,13 +4,15 @@ import Search from "../components/Searchbar";
 import config from "../lib/config";
 import Form from "../components/FormCreatePlaylist";
 import "./index.css";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../reducer/authReducer";
 
 const Home = () => {
-  const [accToken, setAccToken] = useState("");
-  const [isLogin, setIsLogin] = useState(false);
   const [tracks, setTracks] = useState([]);
   const [selected, setSelected] = useState([]);
   const [user, setUser] = useState({});
+  const isLogin = useSelector((state) => state.auth.isLogin);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const accessTokenParams = new URLSearchParams(window.location.hash).get(
@@ -18,8 +20,7 @@ const Home = () => {
     );
 
     if (accessTokenParams !== null) {
-      setAccToken(accessTokenParams);
-      setIsLogin(accessTokenParams !== null);
+      dispatch(login(accessTokenParams));
 
       const setUserProfile = async () => {
         try {
@@ -76,13 +77,10 @@ const Home = () => {
 
   return (
     <div className="formCreatePlaylist">
-      <Form accessToken={accToken} userId={user.id} uris={selected} />
+      <Form userId={user.id} uriTracks={selected} />
       <div className="top-wrapper">
         {!isLogin && <a href={getLinkAuth()}>Authorize</a>}
-        <Search
-          accessToken={accToken}
-          onSuccess={(tracks) => onSuccessSearch(tracks)}
-        />
+        <Search onSuccess={(tracks) => onSuccessSearch(tracks)} />
       </div>
       <div className="container">
         {tracks.map((item) => (

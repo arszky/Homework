@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import config from "../../lib/config";
 import "./form.css";
+import { useSelector } from "react-redux";
 
-const Form = ({ accessToken, userId, uris }) => {
+const Form = ({ userId, uriTracks }) => {
+  const accessToken = useSelector((state) => state.auth.accessToken);
+  console.log(accessToken);
   const [form, setForm] = useState({
     title: "",
     description: "",
@@ -43,7 +46,7 @@ const Form = ({ accessToken, userId, uris }) => {
         const optionsAddTrack = {
           ...requestOptions,
           body: JSON.stringify({
-            uris,
+            uris: uriTracks,
           }),
         };
 
