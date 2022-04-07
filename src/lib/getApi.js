@@ -61,9 +61,13 @@ export const FormCreatePlaylist = async (
   return response.data;
 };
 
-export const addTracksToPlaylist = async (accessToken, playlistId, uris) => {
+export const addTracksToPlaylist = async (
+  accessToken,
+  playlistId,
+  uriTracks
+) => {
   const data = JSON.stringify({
-    uris,
+    uris: uriTracks,
   });
 
   const requestOptions = {

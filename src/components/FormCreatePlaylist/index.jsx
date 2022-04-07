@@ -3,9 +3,13 @@ import config from "../../lib/config";
 import "./form.css";
 import { useSelector } from "react-redux";
 
-const Form = ({ userId, uriTracks }) => {
+const sendFormNetworkCall = (data) => console.log(data);
+const Form = ({ uriTracks }) => {
   const accessToken = useSelector((state) => state.auth.accessToken);
-  console.log(accessToken);
+  const userId = useSelector((state) => state.auth.user.id);
+
+  // console.log(accessToken);
+
   const [form, setForm] = useState({
     title: "",
     description: "",
@@ -14,10 +18,13 @@ const Form = ({ userId, uriTracks }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
+    console.log(form);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    sendFormNetworkCall(form);
+
     if (form.title.length > 10) {
       try {
         const requestOptions = {
@@ -61,7 +68,7 @@ const Form = ({ userId, uriTracks }) => {
         alert(error);
       }
     } else {
-      alert("Title must be large 10 characters");
+      alert("Title at least must be 10 characters");
     }
   };
 
