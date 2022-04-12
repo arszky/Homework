@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import config from "../../lib/config";
-import "./index.css";
 import { useDispatch } from "react-redux";
 import { login } from "../../reducer/authReducer";
 import { useHistory } from "react-router-dom";
+import "../CreatePlaylist/index.css";
 
 const Login = () => {
   const dispatch = useDispatch();

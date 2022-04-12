@@ -43,6 +43,7 @@ const CreatePlaylist = () => {
             title={item.name}
             artist={item.artists[0].name}
             img={item.album.images[0].url}
+            // album={item.album[0].name}
             toggleSelect={() => toggleSelect(item)}
           />
         ))}
