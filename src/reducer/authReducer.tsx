@@ -1,12 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+interface InitialState {
+  accessToken: string;
+  isLogin: boolean;
+  user: any;
+}
+const initialState: InitialState = {
+  accessToken: "",
+  isLogin: false,
+  user: {},
+};
+
 export const authReducer = createSlice({
   name: "auth",
-  initialState: {
-    accessToken: "",
-    isLogin: false,
-    user: {},
-  },
+  initialState,
   reducers: {
     login: (state, action) => {
       state.accessToken = action.payload.accessToken;

@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import "./index.css";
 
-const Card = ({ title, artist, img, toggleSelect }) => {
-  const [isSelected, setIsSelected] = useState(false);
+interface IProps {
+  img: string;
+  title: string;
+  artist: string;
+  toggleSelect: () => void;
+}
 
-  const handleToggleSelect = () => {
+const Card: React.FC<IProps> = ({ title, artist, img, toggleSelect }) => {
+  const [isSelected, setIsSelected] = useState<boolean>(false);
+
+  const handleToggleSelect: () => void = () => {
     setIsSelected(!isSelected);
     toggleSelect();
   };

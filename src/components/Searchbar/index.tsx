@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { ChangeEventHandler, FormEventHandler, useState } from "react";
 import config from "../../lib/config";
 import "./index.css";
 import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core";
 import { Button } from "@material-ui/core";
+import { TRootState } from "../../store";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,14 +14,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Search = ({ onSuccess }) => {
+interface IProps {
+  onSuccess: (tracks: any[], text: string) => void;
+}
+
+const Search: React.FC<IProps> = ({ onSuccess }) => {
   const classes = useStyles();
-  const accessToken = useSelector((state) => state.auth.accessToken);
-  const [text, setText] = useState("");
-  const handleInput = (e) => {
+  const accessToken: string = useSelector(
+    (state: TRootState) => state.auth.accessToken
+  );
+  const [text, setText] = useState<string>("");
+
+  const handleInput: ChangeEventHandler<HTMLInputElement> = (e) => {
     setText(e.target.value);
   };
-  const onSubmit = async (e) => {
+  const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
 
     const requestOptions = {
@@ -37,7 +45,7 @@ const Search = ({ onSuccess }) => {
       ).then((data) => data.json());
 
       const tracks = response.tracks.items;
-      onSuccess(tracks);
+      onSuccess(tracks, text);
     } catch (e) {
       alert(e);
     }
