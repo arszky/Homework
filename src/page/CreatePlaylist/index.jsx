@@ -36,14 +36,13 @@ const CreatePlaylist = () => {
       <div className="top-wrapper">
         <Search onSuccess={(tracks) => onSuccessSearch(tracks)} />
       </div>
-      <div className="container">
+      <div className="container" data-testid="tracks-list">
         {tracks.map((item) => (
           <Card
             key={item.id}
             title={item.name}
             artist={item.artists[0].name}
             img={item.album.images[0].url}
-            // album={item.album[0].name}
             toggleSelect={() => toggleSelect(item)}
           />
         ))}

@@ -60,6 +60,7 @@ const Search: React.FC<IProps> = ({ onSuccess }) => {
           className="form_inputSearch"
           required
           onChange={handleInput}
+          data-testid="input-search"
         />
         <Button
           style={{ borderRadius: 0, height: 40 }}
@@ -67,6 +68,7 @@ const Search: React.FC<IProps> = ({ onSuccess }) => {
           color="default"
           className="form_inputSearch"
           type="submit"
+          data-testid="button-search"
         >
           Search
         </Button>
