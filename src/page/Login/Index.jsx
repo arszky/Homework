@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../../reducer/authReducer";
 import { useHistory } from "react-router-dom";
 import "../CreatePlaylist/index.css";
+import "./index.css";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -55,9 +56,10 @@ const Login = () => {
   };
 
   return (
-    <div className="top-wrapper">
-      <a id="link" href={getLinkAuth()}>
-        Authorization
+    <div className="top-wrapper-auth">
+      <p className="authP"> Create Your Own Playlist on Spotify</p>
+      <a id="link" className="aAuth" href={getLinkAuth()}>
+        Login
       </a>
     </div>
   );

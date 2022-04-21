@@ -31,23 +31,26 @@ const CreatePlaylist = () => {
   };
 
   return (
-    <div className="formCreatePlaylist">
-      <Form uriTracks={selected} />
-      <div className="top-wrapper">
-        <Search onSuccess={(tracks) => onSuccessSearch(tracks)} />
+    <>
+      <div className="formCreatePlaylist">
+        <Form uriTracks={selected} />
+        <div className="top-wrapper">
+          <Search onSuccess={(tracks) => onSuccessSearch(tracks)} />
+        </div>
+        <div className="container" data-testid="tracks-list">
+          {tracks.map((item) => (
+            <Card
+              key={item.id}
+              title={item.name}
+              artist={item.artists[0].name}
+              img={item.album.images[0].url}
+              duration={item.duration_ms}
+              toggleSelect={() => toggleSelect(item)}
+            />
+          ))}
+        </div>
       </div>
-      <div className="container" data-testid="tracks-list">
-        {tracks.map((item) => (
-          <Card
-            key={item.id}
-            title={item.name}
-            artist={item.artists[0].name}
-            img={item.album.images[0].url}
-            toggleSelect={() => toggleSelect(item)}
-          />
-        ))}
-      </div>
-    </div>
+    </>
   );
 };
 
