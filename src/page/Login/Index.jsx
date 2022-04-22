@@ -5,6 +5,7 @@ import { login } from "../../reducer/authReducer";
 import { useHistory } from "react-router-dom";
 import "../CreatePlaylist/index.css";
 import "./index.css";
+import bg from "../../lib/images/background.jpg";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -56,11 +57,13 @@ const Login = () => {
   };
 
   return (
-    <div className="top-wrapper-auth">
-      <p className="authP"> Create Your Own Playlist on Spotify</p>
-      <a id="link" className="aAuth" href={getLinkAuth()}>
-        Login
-      </a>
+    <div className="flex-auth">
+      <div className="top-wrapper-auth">
+        <p className="authP"> Create Your Own Playlist on Spotify</p>
+        <a id="link" className="aAuth" href={getLinkAuth()}>
+          Login
+        </a>
+      </div>
     </div>
   );
 };

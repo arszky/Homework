@@ -2,6 +2,7 @@ import "./index.css";
 import { Link } from "react-router-dom";
 import logo from "../../lib/images/logo.png";
 import account from "../../lib/images/account.png";
+import DarkMode from "../Darkmode";
 
 const Navbar = () => {
   return (
@@ -10,6 +11,9 @@ const Navbar = () => {
         <img src={logo} className="header-logo" alt="spotify" />
       </div>
       <div className="header-right">
+        <div className="darkmode">
+          <DarkMode />
+        </div>
         <div className="profile">
           <img src={account} className="account" alt="spotify account" />
         </div>
